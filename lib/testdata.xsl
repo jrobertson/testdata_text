@@ -2,7 +2,6 @@
 <xsl:output method="xml" indent="yes" />
 
 <xsl:template match="root">
-<tests>
   <summary>
     <title><xsl:value-of select="summary/title"/></title>
     <recordx_type>polyrex</recordx_type>
@@ -14,7 +13,6 @@
   <records>
     <xsl:apply-templates select="item"/>
   </records>
-</tests>
 </xsl:template>
 
 <xsl:template match="root/item">
@@ -54,5 +52,10 @@
     <records/>
   </io>
 </xsl:template>
+
+
+
+
+
 
 </xsl:stylesheet>
