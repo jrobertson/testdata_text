@@ -2,19 +2,17 @@
 <xsl:output method="xml" indent="yes" />
 
 <xsl:template match="root">
-<tests>
   <summary>
     <title><xsl:value-of select="summary/title"/></title>
     <recordx_type>polyrex</recordx_type>
-    <schema>tests/test[path,type,description]/{input[*]; output[*]}</schema>
-    <ruby_version>ruby-2.1.2-p25</ruby_version>
+    <schema>tests/test[path,type,description]/io[type,*]</schema>
+    <ruby_version>ruby-1.9.2-p180</ruby_version>
     <script><xsl:value-of select="summary/script"/></script>
     <test_dir><xsl:value-of select="summary/test_dir"/></test_dir>    
   </summary>
   <records>
     <xsl:apply-templates select="item"/>
   </records>
-</tests>
 </xsl:template>
 
 <xsl:template match="root/item">
@@ -32,26 +30,32 @@
 </xsl:template>
 
 <xsl:template match="input">
-  <input>
+  <io>
     <summary>
+      <type>input</type>
       <xsl:for-each select="item/*">
         <xsl:copy-of select="."/>
       </xsl:for-each>
     </summary>
     <records/>
-  </input>
+  </io>
 </xsl:template>
 
 <xsl:template match="output">
-  <output>
+  <io>
     <summary>
+      <type>output</type>
       <xsl:for-each select="item/*">
         <xsl:copy-of select="."/>
       </xsl:for-each>
     </summary>
     <records/>
-  </output>
+  </io>
 </xsl:template>
+
+
+
+
 
 
 </xsl:stylesheet>
