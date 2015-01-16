@@ -12,8 +12,10 @@ end
 
 class TestdataText
 
-  def self.parse(txt)
+  def self.parse(raw_txt)
 
+    txt = raw_txt.split(/(?=\n=begin)/m)\
+                                .map {|x| x.sub(/\n=begin.*=end/m,'')}.join    
     rowx = RowX.new(txt, level: 1)
     xml = rowx.to_xml
 

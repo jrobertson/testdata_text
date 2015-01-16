@@ -14,7 +14,7 @@ class TestdataText
 
   def self.parse(txt)
 
-    rowx = RowX.new(txt, level: 2)
+    rowx = RowX.new(txt, level: 1)
     xml = rowx.to_xml
 
     lib = File.dirname(__FILE__)
