@@ -17,7 +17,9 @@ class TestdataText
 
     txt = raw_txt.split(/(?=\n=begin)/m)\
                                 .map {|x| x.sub(/\n=begin.*=end/m,'')}.join    
-    rowx = RowX.new(txt, level: 1, ignore_blank_lines: true, abort_1_row: true)
+    
+    rowx = RowX.new(txt, level: 1, ignore_blank_lines: false, abort_1_row: true)
+
     xml = rowx.to_xml
 
     lib = File.dirname(__FILE__)
